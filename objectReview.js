@@ -1,26 +1,47 @@
 //Make a 'favoriteThings' object that contains the following keys: band, food, person, book, movie, holiday. Have the values to those keys be your favorite thing in that category. 
 
   //Your code here
+  var favoriteThings = {
+    band: 'The Beatles',
+    food: 'Pizza',
+    person: 'Tiffany Done',
+    book: 'The Lion, The Witch, and The Wardrobe',
+    movie: 'Back to the Future',
+    holiday: 'Thanksgiving'
+  };
+
+  console.log('Question 1a');
+  console.log(favoriteThings);
 
 //After you've made your object, add another key named 'car' with the value being your favorite car and then another key named 'brand' with the value being your favorite brand.
 
   //Your code here
+  favoriteThings.car = 'Toyota SR5 Pickup';
+  favoriteThings.brand = 'Apple';
+
+  console.log('\nQuestion 1b');
+  console.log(favoriteThings);
 
 //Now change the food key in your favoriteThings object to be 'Lettuce' and change the book key in your favoriteThings object to be '50 Shades of Gray'. 
 
   //Your code here
+  favoriteThings.food = 'Lettuce';
+  favoriteThings.book = '50 Shades of Gray';
 
 //Now, alert your favorite person, then alert your favorite book.
 
   //Your code here
-
+  //Using console prints instead of alerts so we can run in node.js
+  console.log('\nQuestion 1c');
+  console.log('My favorite person is:' + ' ' + favoriteThings.person);
+  console.log('My favorite book is (not!!):' + ' ' + favoriteThings.book);
 
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
 
 
-var user = {a
+var user = {
     name: 'Tyler McGinnis', 
     email: null,
     pwHash: 'U+Ldlngx2BYQk',
