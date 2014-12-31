@@ -1,10 +1,12 @@
 /* Declare and Define the functions here that will make the function calls below work properly */
 
-
+function first(array, cb) {
+  cb(array[0]);
+}
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 first(names, function(firstName){
-  console.log('The first name in names is ', firstName)
+  console.log('The first name in names is ', firstName);
 });
 
 
@@ -12,7 +14,9 @@ first(names, function(firstName){
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
+function last(array, cb) {
+  cb(names[array.length - 1]);
+}
 
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -26,6 +30,16 @@ last(names, function(lastName){
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
 //have the contains function return a boolean value for if the name is in the array or not.
+function contains(string, array, cb) {
+  var result = false;
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] === string) {
+      result = true;
+      break; // make sure we stop looping as soon as we see the string once in the array.
+    }
+  }
+  cb(result);
+}
 
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -42,7 +56,14 @@ contains('Colt', names, function(yes){
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
+function map(array, cb) {
+  var newArr = [];
+  for (var i = 0; i < array.length; i++) {
+    newArr.push(cb(array[i]));
+  }
+  console.log(newArr);
+  return newArr;
+}
 
 
 var numbers = [1,2,3,4,5];
@@ -56,7 +77,13 @@ map(numbers, function(num){
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
+function uniq(arr, cb) {
+  var newArr = [];
+  for (var i = 0; i < arr.length; i++) {
+    if (newArr.indexOf(arr[i]) === -1) newArr.push(arr[i]);
+  }
+  cb(newArr);
+}
 
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -69,12 +96,16 @@ uniq(names, function(uniqArr){
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
+function each(arr, cb) {
+  for (var i = 0; i < arr.length; i++) {
+    cb(arr[i], i);
+  }
+}
 
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 each(names, function(item, indice){
-  console.log('The item in the ' + indice + 'position is ' + item)
+  console.log('The item in the ' + indice + ' position is ' + item);
 });
 
 
@@ -82,7 +113,11 @@ each(names, function(item, indice){
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
+function getUserById(id, userList, cb) {
+  for (var i = 0; i < userList.length; i++) {
+    if(userList[i].id === id) cb(userList[i]);
+  }
+}
 
 
 var users = [
@@ -114,11 +149,17 @@ getUserById('16t', users, function(user){
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
+function find(arr, cb) {
+  for (var i = 0; i < arr.length; i++) {
+    if (cb(arr[i])) return arr[i];
+  }
+}
 
 
 //Looks through each value in the list, returning the first one that passes a truth test 
 var numbers  = [1, 2, 3, 4, 5, 6];
-find(numbers, function(num){ 
+var x = find(numbers, function(num){ 
   return num % 2 == 0; //should return 2
-})
+});
+
+console.log(x);
