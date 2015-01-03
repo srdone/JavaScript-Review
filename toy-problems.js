@@ -52,6 +52,37 @@ There is an array of non-negative integers. A second array is formed by shufflin
 
 */
 
+Array.prototype.shuffle = function() {
+  var randIdx = Math.floor(Math.random() * this.length);
+  for (var i = 0; i < this.length; i++) {
+    this.splice(randIdx, 0, this.shift());
+  }
+  // why do we have to return this? arent we operating directly on the array?
+  return this;
+};
+
+Array.prototype.deleteRandom = function() {
+  var randIdx = Math.floor(Math.random() * this.length);
+  delete this[randIdx];
+};
+
+// finds the values in originalArr that are not in newArr and returns a unique list.
+function findMissingValues(originalArr, newArr) {
+  var result = [];
+  for (var i = 0; i < originalArr.length; i++) {
+    // check if in original array and then add if not in the result set already
+    if (newArr.indexOf(originalArr[i]) === -1 && result.indexOf(originalArr[i]) === -1) {
+      result.push(originalArr[i]);
+    }
+  }
+  return result;
+}
+
+array1 = [1, 2, 3, 4, 5];
+array2 = array1.slice(0).shuffle();
+array2.deleteRandom();
+console.log(findMissingValues(array1, array2));
+
 /*
 
 Write a function that returns the longest word(s) from a sentence. The function should not return any duplicate words (case-insensitive).
