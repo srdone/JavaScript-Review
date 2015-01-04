@@ -8,6 +8,8 @@ plusOneSum([1, 2, 3, 4]); // 14
 
 */
 
+console.log('Question 1:');
+
 function plusOneSum(arr) {
   var total = 0;
   for (var i = 0; i < arr.length; i++) {
@@ -25,6 +27,8 @@ Write a function that accepts a multi dimensional array and returns a flattened 
 flatten([1, 2, [3, [4], 5, 6], 7]) // [1, 2, 3, 4, 5, 6, 7]
 
 */
+
+console.log('\nQuestion 2:');
 
 function flatten(arr, newArr) { // we include 'newArr' so we can call flatten recursively and add to the final array.
   newArr = typeof newArr !== 'undefined' ? newArr : []; // set the default value of newArr
@@ -46,11 +50,59 @@ Given an array [a1, a2, ..., aN, b1, b2, ..., bN, c1, c2, ..., cN] convert it to
 
 */
 
+console.log('\nQuestion 3:');
+
+function specialSort(array) {
+
+  // returns the sort value based only on the number (second char)
+  function numSort(a,b) {
+    var diff = a[1] - b[1]; // javascript is automatically parsing the integer
+    if (diff < 0) {
+      return -1;
+    } else if (diff === 0) {
+      return 0;
+    } else if (diff > 0) {
+      return 1;
+    }
+  }
+
+  // returns the sort value based only on the letter (first char);
+  function alphaSort(a, b) {
+    if (a[0].toLowerCase() < b[0].toLowerCase()) {
+      return -1;
+    } else if (a[0].toLowerCase() === b[0].toLowerCase()) {
+      return 0;
+    } else if (a[0].toLowerCase() > b[0].toLowerCase()) {
+      return 1;
+    }
+  }
+
+  // if the numbers are different, we go with the sort value from numSort
+  // if the numbers are the same, then we get the sort level from the letter (alphaSort)
+  function comboSort(a, b) {
+    var numSortValue = numSort(a, b); //call this first so we only call it once on each pair
+    console.log('a: ' + a + '; b: ' + b + '; numSortValue: ' + numSortValue + '; alphaSortValue: ' + alphaSort(a,b));
+    if (numSortValue === 0) {
+      return alphaSort(a, b);
+    }
+    else {
+      return numSortValue;
+    }
+  }
+
+  return array.sort(comboSort);
+}
+
+console.log(specialSort(['b1', 'a3', 'a2', 'a1', 'b2', 'b3', 'c3', 'c2', 'c1']));
+
 /*
 
 There is an array of non-negative integers. A second array is formed by shuffling the elements of the first array and deleting a random element. Given these two arrays, find which element is missing in the second array.
 
 */
+
+
+console.log('\nQuestion 4:');
 
 Array.prototype.shuffle = function() {
   var randIdx = Math.floor(Math.random() * this.length);
@@ -94,6 +146,7 @@ longestWords("I gave a present to my parents") // ["present", "parents"]
 longestWords("Buffalo buffalo Buffalo buffalo buffalo buffalo Buffalo buffalo") // ["buffalo"] or ["Buffalo"]
 
 */
+console.log('\nQuestion 5:');
 
 function longestWords(string) {
   string = string.toLowerCase();
@@ -140,6 +193,8 @@ Find the sum of all the multiples of 3 or 5 below 1000.
 
 */
 
+console.log('\nQuestion 6:');
+
 //limit is non-inclusive
 function sumMultiples(divisors, limit) {
   Number.prototype.isMultiple = function(nums) {
@@ -169,6 +224,7 @@ console.log(sumMultiples([3,5], 1000));
 Remove duplicate characters in a given string keeping only the first occurrences. For example, if the input is ‘tree traversal’ the output will be "tre avsl".
 
 */
+console.log('\nQuestion 7:');
 
 function rmDupedLtrs(string) {
   var result = '';
@@ -189,4 +245,37 @@ Write a sum method which will work properly when invoked using either syntax bel
 console.log(sum(2,3));   // Outputs 5
 console.log(sum(2)(3));  // Outputs 5
 
+*/
+
+console.log('\nQuestion 8:');
+
+// The following is a generalization of the solution. I found the solution in my search to understand what was going on.
+// The original (ungeneralized version) can be found at http://www.drdobbs.com/open-source/currying-and-partial-functions-in-javasc/231001821?pgno=2
+
+console.log('Not yet completed - trying to generalize something for add(1,2)(3)(5,2) for example');
+/*
+function add(x) {
+  if (typeof(x) != 'undefined' && add.arguments.length === 1) {
+    return function (y) {
+      console.log('X is: ' + x);
+      console.log('Y is: ' + y);
+      return x + y;
+    };
+  }
+
+  var total = 0;
+  for (var i = 0; i < add.arguments.length; i++) {
+    total += add.arguments[i];
+  }
+  return total;
+}
+
+console.log('\nconsole.log(add(1,2)) :');
+console.log(add(1,2));
+console.log('\nconsole.log(add(1)(2)) :');
+console.log(add(1)(2));
+console.log('\nconsole.log(add(1)(1,1)) :');
+console.log(add(1)(1,1));
+console.log('console.log(add(1,1)(1)) :');
+console.log(add(1,1)(1));
 */
