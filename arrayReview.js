@@ -4,11 +4,12 @@ var threeItems = [1,2,3];
 
   //code here
 
-  console.log('Quesion 1');
-  function last() {
-    console.log(threeItems[threeItems.length - 1]);
+  console.log('Question 1');
+  function last(arr) {
+    return arr[arr.length - 1];
   }
-  last();
+  var lastItem = last(threeItems);
+  console.log(lastItem);
 
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
@@ -20,11 +21,16 @@ var evenArray = [1,2,3,6,22,98,45,23,22,12];
 
   //code here
   console.log('\nQuestion 2');
-  for (var i = 0; i < evenArray.length; i++) {
-    if (evenArray[i] % 2 !== 0) {
-      evenArray.splice(i,i);
+  // should start from end of the array instead of the beginning to avoid missing values
+  // We are acting directly on the array - we did not make a copy (may not be best practice depending on situation);
+  function removeOdds(arr) {
+    for (var i = arr.length - 1; i >= 0; i--) {
+      if (arr[i] % 2 !== 0) {
+        arr.splice(i,1); // why did I use i instead of 1?
+      }
     }
   }
+  removeOdds(evenArray);
   console.log(evenArray);
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
@@ -57,7 +63,8 @@ alertInRandomArray(randomArray);
 
 
 //Create a copy of first and save it into second. Then, add 6 and 7 to the end of second. When you run this, first should be just [1,2,3,4,5] and second will be [1,2,3,4,5,6,7] if you created your copy correctly.
-var first = [1,2,3,4,5];
+var a = 1;
+var first = [a,2,3,4,5];
 var second;
 
   //code here
