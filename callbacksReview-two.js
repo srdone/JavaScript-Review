@@ -38,11 +38,23 @@ var songs =
 //Write a 'getter' function that returns the songs array.
 
   //code here
+  function getSongs() {
+    return songs;
+  }
 
 
 //Now write a setter that takes in two paramaters.
 //The first parameter is a song object and the second parameter is a callback (which will be a placeholder for your getter function)
 //Inside your setter function first add the first parameter, or the song object, to the end of your songs array.
 //Once you do that, call your callback (getter) function which should get the songs and return them.
-  
+
   //code here
+  function addSong(song, cb) {
+    songs.push(song);
+    cb();
+  }
+
+  var newSong = {"wrapperType":"track", "kind":"song", "artistId":351794, "collectionId":22175273, "trackId":22175366, "artistName":"Nelly", "collectionName":"Suit", "trackName":"My Place", "collectionCensoredName":"Suit", "trackCensoredName":"My Place", "artistViewUrl":"https://itunes.apple.com/us/artist/nelly/id351794?uo=4", "collectionViewUrl":"https://itunes.apple.com/us/album/my-place/id22175273?i=22175366&uo=4", "trackViewUrl":"https://itunes.apple.com/us/album/my-place/id22175273?i=22175366&uo=4", "previewUrl":"http://a872.phobos.apple.com/us/r1000/081/Music/b6/25/42/mzm.ktyqjaan.aac.p.m4a", "artworkUrl30":"http://a4.mzstatic.com/us/r30/Music/y2004/m09/d03/h17/s05.bhnezfck.30x30-50.jpg", "artworkUrl60":"http://a1.mzstatic.com/us/r30/Music/y2004/m09/d03/h17/s05.bhnezfck.60x60-50.jpg", "artworkUrl100":"http://a3.mzstatic.com/us/r30/Music/y2004/m09/d03/h17/s05.bhnezfck.100x100-75.jpg", "collectionPrice":9.99, "trackPrice":1.29, "releaseDate":"2004-09-13T07:00:00Z", "collectionExplicitness":"explicit", "trackExplicitness":"explicit", "discCount":1, "discNumber":1, "trackCount":11, "trackNumber":3, "trackTimeMillis":336507, "country":"USA", "currency":"USD", "contentAdvisoryRating":"Explicit", "radioStationUrl":"https://itunes.apple.com/station/idra.22175366"};
+  addSong(newSong, getSongs);
+
+  console.log(songs);
