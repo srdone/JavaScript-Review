@@ -81,7 +81,7 @@ function specialSort(array) {
   // if the numbers are the same, then we get the sort level from the letter (alphaSort)
   function comboSort(a, b) {
     var numSortValue = numSort(a, b); //call this first so we only call it once on each pair
-    console.log('a: ' + a + '; b: ' + b + '; numSortValue: ' + numSortValue + '; alphaSortValue: ' + alphaSort(a,b));
+    // console.log('a: ' + a + '; b: ' + b + '; numSortValue: ' + numSortValue + '; alphaSortValue: ' + alphaSort(a,b));
     if (numSortValue === 0) {
       return alphaSort(a, b);
     }
@@ -249,33 +249,28 @@ console.log(sum(2)(3));  // Outputs 5
 
 console.log('\nQuestion 8:');
 
-// The following is a generalization of the solution. I found the solution in my search to understand what was going on.
-// The original (ungeneralized version) can be found at http://www.drdobbs.com/open-source/currying-and-partial-functions-in-javasc/231001821?pgno=2
+// The following is the result of talking with mentor.
+// A generalized (that I don't understand) solution found at: https://medium.com/@kbrainwave/currying-in-javascript-ce6da2d324fe
 
-console.log('Not yet completed - trying to generalize something for add(1,2)(3)(5,2) for example');
-/*
-function add(x) {
-  if (typeof(x) != 'undefined' && add.arguments.length === 1) {
-    return function (y) {
-      console.log('X is: ' + x);
-      console.log('Y is: ' + y);
-      return x + y;
+function add(a, b) {
+  if (b) {
+    return a + b;
+  } else {
+    return function(c) {
+      return a + c;
     };
   }
-
-  var total = 0;
-  for (var i = 0; i < add.arguments.length; i++) {
-    total += add.arguments[i];
-  }
-  return total;
 }
 
-console.log('\nconsole.log(add(1,2)) :');
+console.log('\nconsole.log(1,2) :');
 console.log(add(1,2));
 console.log('\nconsole.log(add(1)(2)) :');
 console.log(add(1)(2));
+
+// The following don't currently work - I haven't been able to generalize the problem.
 console.log('\nconsole.log(add(1)(1,1)) :');
 console.log(add(1)(1,1));
 console.log('console.log(add(1,1)(1)) :');
 console.log(add(1,1)(1));
-*/
+console.log('console.log(add(1)(1)(1)');
+console.log(add(1)(1)(1));
